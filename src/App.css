@@ -21,7 +21,6 @@
 .Square {
   width: 75px;
   height: 75px;
-  background-color: orange;
 }
 
 #DarkSquare {
@@ -29,6 +28,15 @@
 }
 #LightSquare {
   background-color: white;
+}
+
+.CenteringContainer {
+  height: 620px;
+  /* border: solid;
+  border-width: thin; */
+  width: 800px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .BoardPositions {
@@ -42,6 +50,34 @@
   align-items: center;
 }
 
+.UserOptions {
+  height: 400px;
+  width: 150px;
+  background-color: #dfdfdf;
+  display: flex;
+  flex-direction: column;
+}
+
 .Square:hover {
-  filter: invert(25%);
+  filter: invert(20%);
+}
+
+.Title {
+  background-color: yellow;
+  flex: 0.75;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.GameType {
+  background-color: red;
+  flex: 2;
+}
+.Color {
+  background-color: orange;
+  flex: 2;
+}
+.Controler {
+  background-color: blue;
+  flex: 1;
 }

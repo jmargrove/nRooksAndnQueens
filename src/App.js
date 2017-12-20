@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { calc } from "./RooksEquation";
 import "./App.css";
 
 class App extends Component {
@@ -13,6 +14,7 @@ class App extends Component {
         <div
           className="Square"
           key={i}
+          id={el.toString() + i.toString()}
           id={
             el % 2
               ? i % 2 ? "DarkSquare" : "LightSquare"
@@ -23,15 +25,21 @@ class App extends Component {
     });
   }
 
-  addingARook() {
-    window.getElementById();
-  }
-
   render() {
     return (
       <div className="MaxWidth">
-        <div className="BoardPositions">
-          <div className="TheBoard">{this.renderingThesquares()}</div>
+        <div className="CenteringContainer">
+          <div className="BoardPositions">
+            <div className="TheBoard">{this.renderingThesquares()}</div>
+          </div>
+          <div className="UserOptions">
+            <div className="Title">
+              <h2>settings</h2>
+            </div>
+            <div className="GameType">gameType</div>
+            <div className="Color">color setting</div>
+            <div className="Controler">runStopcontrole</div>
+          </div>
         </div>
       </div>
     );
