@@ -1,1 +1,47 @@
+.MaxWidth {
+  max-width: 960px;
+  height: 100vh;
+  margin: auto;
+  background-color: #afafaf;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.TheBoard {
+  width: 600px;
+  height: 600px;
+  background-color: white;
+  display: flex;
+  flex-wrap: wrap;
+  border: solid;
+  border-width: thin;
+}
+
+.Square {
+  width: 75px;
+  height: 75px;
+  background-color: orange;
+}
+
+#DarkSquare {
+  background-color: black;
+}
+#LightSquare {
+  background-color: white;
+}
+
+.BoardPositions {
+  height: 620px;
+  width: 620px;
+  background-color: white;
+  border: solid;
+  border-width: thin;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Square:hover {
+  filter: invert(25%);
+}
