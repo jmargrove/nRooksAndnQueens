@@ -10,7 +10,18 @@ class UserSettings extends Component {
     );
   }
 
-  boardColor() {}
+  boardColor(color1, color2) {
+    return (
+      <div className="ColorChoice" id={color1}>
+        <p> {color1}s</p>
+        <input
+          ref={el => (this.blue = el)}
+          onClick={() => this.props.colorChoice(color1, color2)}
+          type="button"
+        />
+      </div>
+    );
+  }
 
   render() {
     console.log(this);
@@ -22,24 +33,11 @@ class UserSettings extends Component {
         {this.gameType("nQueens")}
         {this.gameType("nRooks")}
         <div className="Color">
-          <div className="ColorChoice" id="Blues">
-            <input
-              ref={el => (this.blue = el)}
-              onClick={() => this.props.colorChoice("blue", "lightblue")}
-              type="button"
-            />
-          </div>
-          <div className="ColorChoice" id="Blacks">
-            <input
-              ref={el => (this.black = el)}
-              onClick={() => this.props.colorChoice("black", "white")}
-              type="button"
-              labels="black"
-            />
-          </div>
-          <div className="ColorChoice" id="Reds" />
-          <div className="ColorChoice" id="Oranges" />
-          <div className="ColorChoice" id="Purples" />
+          {this.boardColor("blue", "lightblue")}
+          {this.boardColor("black", "white")}
+          {this.boardColor("red", "pink")}
+          {this.boardColor("orange", "yellow")}
+          {this.boardColor("purple", "white")}
         </div>
         <div className="Controler">runStopcontrole</div>
       </div>
