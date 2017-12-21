@@ -1,8 +1,16 @@
 import React, { Component } from "react";
 import { calc } from "./RooksEquation";
+import UserSettings from "./components/UserSettings";
 import "./App.css";
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      tileColor: ["black", "white"]
+    };
+  }
+
   renderingThesquares() {
     const arr = [];
     for (let i = 0; i < 8; i++) {
@@ -15,31 +23,35 @@ class App extends Component {
           className="Square"
           key={i}
           id={el.toString() + i.toString()}
-          id={
-            el % 2
-              ? i % 2 ? "DarkSquare" : "LightSquare"
-              : i % 2 ? "LightSquare" : "DarkSquare"
-          }
+          style={{
+            "background-color":
+              el % 2
+                ? i % 2 ? this.state.tileColor[0] : this.state.tileColor[1]
+                : i % 2 ? this.state.tileColor[1] : this.state.tileColor[0]
+          }}
+          // id={
+          //   el % 2
+          //     ? i % 2 ? "DarkSquare" : "LightSquare"
+          //     : i % 2 ? "LightSquare" : "DarkSquare"
+          // }
         />
       );
     });
   }
 
+  colorChoice = (color1, color2) => {
+    this.setState({ tileColor: [color1, color2] });
+  };
+
   render() {
     return (
       <div className="MaxWidth">
+        <h1> nQueens & nRooks Algorythem </h1>
         <div className="CenteringContainer">
           <div className="BoardPositions">
             <div className="TheBoard">{this.renderingThesquares()}</div>
           </div>
-          <div className="UserOptions">
-            <div className="Title">
-              <h2>settings</h2>
-            </div>
-            <div className="GameType">gameType</div>
-            <div className="Color">color setting</div>
-            <div className="Controler">runStopcontrole</div>
-          </div>
+          <UserSettings colorChoice={this.colorChoice} />
         </div>
       </div>
     );

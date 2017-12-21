@@ -2,9 +2,10 @@
   max-width: 960px;
   height: 100vh;
   margin: auto;
-  background-color: #afafaf;
+  background-color: #fafafa;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
 }
 
@@ -32,8 +33,6 @@
 
 .CenteringContainer {
   height: 620px;
-  /* border: solid;
-  border-width: thin; */
   width: 800px;
   display: flex;
   justify-content: space-between;
@@ -53,9 +52,11 @@
 .UserOptions {
   height: 400px;
   width: 150px;
-  background-color: #dfdfdf;
   display: flex;
   flex-direction: column;
+  border: solid;
+  border-width: thin;
+  border-color: black;
 }
 
 .Square:hover {
@@ -63,21 +64,58 @@
 }
 
 .Title {
-  background-color: yellow;
   flex: 0.75;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .GameType {
-  background-color: red;
-  flex: 2;
+  flex: 0.5;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
+
+.Controler {
+  flex: 1;
+}
+
+.Type {
+  font-size: 20px;
+  margin-left: 20px;
+}
+.CheckBox {
+  margin-right: 20px;
+}
+
 .Color {
   background-color: orange;
   flex: 2;
+  display: flex;
+  flex-direction: column;
 }
-.Controler {
-  background-color: blue;
+
+.ColorChoice {
   flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+#Blues {
+  background-color: blue;
+}
+#Blacks {
+  background-color: red;
+}
+#Reds {
+  background-color: yellow;
+}
+#Oranges {
+  background-color: green;
+}
+#Purples {
+  background-color: purple;
 }
