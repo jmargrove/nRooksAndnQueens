@@ -20,8 +20,18 @@
 }
 
 .Square {
-  width: 75px;
-  height: 75px;
+  width: 150px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Rook {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: red;
 }
 
 #DarkSquare {
