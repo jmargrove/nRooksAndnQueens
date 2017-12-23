@@ -7,6 +7,11 @@ button {
   box-shadow: 0 0 0 0;
 }
 
+.quaterBox {
+  flex: 1;
+  background-color: blue;
+}
+
 h1 {
   font-size: 50px;
   background-color: rgba(255, 255, 255, 0.75);
@@ -33,10 +38,10 @@ h1 {
 }
 
 .Rook {
-  width: 30px;
-  height: 30px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
-  background-color: red;
+  background-image: url(require("./src/rook.svg"));
   cursor: pointer;
 }
 .BoardSizeChoice {
