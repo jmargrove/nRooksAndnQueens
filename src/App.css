@@ -1,1 +1,160 @@
+* {
+  font-family: "Alegreya Sans";
+}
 
+button {
+  background-color: #fafafa;
+  box-shadow: 0 0 0 0;
+}
+
+h1 {
+  font-size: 50px;
+  background-color: rgba(255, 255, 255, 0.75);
+  border-bottom: solid;
+  border-top: solid;
+  border-width: thin;
+}
+
+.MaxWidth {
+  max-width: 100vw;
+  height: 100vh;
+  margin: auto;
+  /* background-color: #fafafa; */
+  background: radial-gradient(
+      farthest-corner at 200px 40px,
+      rgba(255, 255, 255, 0.6),
+      rgba(155, 155, 155, 1)
+    ),
+    url("https://i.pinimg.com/564x/dc/db/25/dcdb25898500b461badb22d17f3a1835.jpg");
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.Rook {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: red;
+  cursor: pointer;
+}
+.BoardSizeChoice {
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  background-color: transparent;
+  border-bottom: solid;
+  border-width: thin;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+#DarkSquare {
+  background-color: black;
+}
+#LightSquare {
+  background-color: white;
+}
+.CenteringContainer {
+  height: 620px;
+  width: 800px;
+  display: flex;
+  justify-content: space-between;
+}
+.BoardPositions {
+  height: 620px;
+  width: 620px;
+  border: solid;
+  border-color: black;
+  border-width: thin;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.75);
+}
+.UserOptions {
+  height: 400px;
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  border: solid;
+  border-width: thin;
+  border-color: black;
+  background: rgba(255, 255, 255, 0.75);
+}
+.Square:hover {
+  filter: invert(20%);
+}
+.Title {
+  flex: 0.33;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.GameType {
+  flex: 0.4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.Type {
+  font-size: 15px;
+  margin-left: 20px;
+}
+.CheckBox {
+  margin-right: 20px;
+}
+.Color {
+  background-color: orange;
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+}
+.ColorChoice {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+#Blues {
+  background-color: blue;
+}
+#Blacks {
+  background-color: red;
+}
+#Reds {
+  background-color: yellow;
+}
+#Oranges {
+  background-color: green;
+}
+#Purples {
+  background-color: purple;
+}
+.Controler {
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.PreviousButtion {
+  width: 0;
+  height: 0;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-right: 15px solid black;
+}
+.SolutionNumber {
+  font-size: 40px;
+}
+.NextButtion {
+  width: 0;
+  height: 0;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-left: 15px solid black;
+}
