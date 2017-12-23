@@ -6,7 +6,9 @@ class Board extends Component {
     this.state = {
       boardDim: 4,
       boardHeight: "600px",
-      boardWidth: "600px"
+      boardWidth: "600px",
+      tileDim: "150px",
+      theChosenTileColor: ["black", "white"]
     };
   }
 
@@ -25,16 +27,7 @@ class Board extends Component {
           className="Square"
           key={i}
           id={"poss" + el + arrj[i]}
-          style={{
-            backgroundColor:
-              el % 2
-                ? i % 2
-                  ? this.props.theChosenTileColor[0]
-                  : this.props.theChosenTileColor[1]
-                : i % 2
-                  ? this.props.theChosenTileColor[1]
-                  : this.props.theChosenTileColor[0]
-          }}
+          style={this.squareDimentions(el, i, this.state.boardDim)}
         >
           {this.props.theRook(
             "poss" + el + arrj[i],
@@ -48,12 +41,23 @@ class Board extends Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.boardDim !== nextProps.boardDim) {
       this.setState({ boardDim: nextProps.boardDim });
-      this.setState((prevState, props) => {
-        return { boardWidth: 600 / 4 * props.boardDim + "px" };
-      });
-      this.setState((prevState, props) => {
-        return { boardHeight: 600 / 4 * props.boardDim + "px" };
-      });
+      if (nextProps.boardDim <= 4) {
+        this.setState((prevState, props) => {
+          return {
+            boardWidth: 600 / 4 * props.boardDim + "px",
+            boardHeight: 600 / 4 * props.boardDim + "px",
+            tileDim: "150px"
+          };
+        });
+      } else {
+        this.setState((prevState, props) => {
+          return {
+            boardWidth: "600px",
+            boardHeight: "600px",
+            tileDim: 150 / props.boardDim * 4 + "px"
+          };
+        });
+      }
     }
   }
 
@@ -64,14 +68,43 @@ class Board extends Component {
       display: "flex",
       flexWrap: "wrap",
       border: "solid",
-      borderWidth: "thin",
-      backgroundColor: "black"
+      borderWidth: "thin"
     };
   };
 
+  sortingTheTileColor(el, i, dim) {
+    if (dim % 2 === 0) {
+      return el % 2
+        ? i % 2
+          ? this.state.theChosenTileColor[0]
+          : this.state.theChosenTileColor[1]
+        : i % 2
+          ? this.state.theChosenTileColor[1]
+          : this.state.theChosenTileColor[0];
+    } else {
+      return i % 2
+        ? this.state.theChosenTileColor[1]
+        : this.state.theChosenTileColor[0];
+    }
+  }
+
+  squareDimentions(el, i, dim) {
+    console.log(this.props.theChosenTileColor[1]);
+    return {
+      width: this.state.tileDim,
+      height: this.state.tileDim,
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      backgroundColor: this.sortingTheTileColor(el, i, dim)
+    };
+  }
+
   render() {
     console.log("the state", this.boardDimentions());
-    return <div style={this.boardDimentions()} />;
+    return (
+      <div style={this.boardDimentions()}>{this.renderingThesquares()}</div>
+    );
   }
 }
 

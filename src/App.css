@@ -9,7 +9,7 @@ button {
 
 h1 {
   font-size: 50px;
-  background-color: rgba(255, 255, 255, 0.33);
+  background-color: rgba(255, 255, 255, 0.75);
   border-bottom: solid;
   border-top: solid;
   border-width: thin;
@@ -32,13 +32,6 @@ h1 {
   align-items: center;
 }
 
-.Square {
-  width: 150px;
-  height: 150px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 .Rook {
   width: 30px;
   height: 30px;
@@ -73,12 +66,13 @@ h1 {
 .BoardPositions {
   height: 620px;
   width: 620px;
-  background-color: white;
   border: solid;
+  border-color: black;
   border-width: thin;
   display: flex;
   justify-content: center;
   align-items: center;
+  background: rgba(255, 255, 255, 0.75);
 }
 .UserOptions {
   height: 400px;
@@ -88,7 +82,7 @@ h1 {
   border: solid;
   border-width: thin;
   border-color: black;
-  background-color: white;
+  background: rgba(255, 255, 255, 0.75);
 }
 .Square:hover {
   filter: invert(20%);
