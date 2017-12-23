@@ -1,4 +1,5 @@
 {
+  "homepage": "https://t03jam8.github.io/nRooksAndnQueens/",
   "name": "nqueens",
   "version": "0.1.0",
   "private": true,
@@ -14,6 +15,7 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
-    "babel": "^6.23.0"
+    "babel": "^6.23.0",
+    "gh-pages": "^1.1.0"
   }
 }
