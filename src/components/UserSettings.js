@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 
 class UserSettings extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      solutionNumber: 0
+    };
+  }
   gameType(type) {
     return (
       <div className="GameType">
@@ -23,12 +29,36 @@ class UserSettings extends Component {
     );
   }
 
+  async nextSolution() {
+    if (this.state.solutionNumber < this.props.totalNumberOfSolutions - 1) {
+      await this.setState((prevState, props) => {
+        return { solutionNumber: prevState.solutionNumber + 1 };
+      });
+      this.props.updateSolutionNumber(this.state.solutionNumber);
+    }
+  }
+
+  async previousSolution() {
+    if (this.state.solutionNumber > 0) {
+      await this.setState((prevState, props) => {
+        return { solutionNumber: prevState.solutionNumber - 1 };
+      });
+      this.props.updateSolutionNumber(this.state.solutionNumber);
+    }
+  }
+
   render() {
-    console.log(this);
     return (
       <div className="UserOptions">
         <div className="Title">
           <h3>User Settings</h3>
+        </div>
+        <div className="BoardSizeChoice">
+          <div>Board Size</div>
+          <div>
+            <input type="number" min={1} max={12} />
+          </div>
+          <button>Make Board</button>
         </div>
         {this.gameType("nQueens")}
         {this.gameType("nRooks")}
@@ -39,7 +69,14 @@ class UserSettings extends Component {
           {this.boardColor("orange", "yellow")}
           {this.boardColor("purple", "white")}
         </div>
-        <div className="Controler">runStopcontrole</div>
+        <div className="Controler">
+          <div
+            className="PreviousButtion"
+            onClick={() => this.previousSolution()}
+          />
+          <div className="SolutionNumber">{this.state.solutionNumber + 1}</div>
+          <div className="NextButtion" onClick={() => this.nextSolution()} />
+        </div>
       </div>
     );
   }
