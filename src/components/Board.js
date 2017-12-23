@@ -4,7 +4,7 @@ class Board extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      boardDim: 4,
+      boardDim: 0,
       boardHeight: "600px",
       boardWidth: "600px",
       tileDim: "150px",
@@ -23,12 +23,7 @@ class Board extends Component {
     }
     return arri.map((el, i) => {
       return (
-        <div
-          className="Square"
-          key={i}
-          id={"poss" + el + arrj[i]}
-          style={this.squareDimentions(el, i, this.state.boardDim)}
-        >
+        <div key={i} style={this.squareDimentions(el, i, this.state.boardDim)}>
           {this.props.theRook(
             "poss" + el + arrj[i],
             this.props.displaySolution
@@ -75,21 +70,14 @@ class Board extends Component {
   sortingTheTileColor(el, i, dim) {
     if (dim % 2 === 0) {
       return el % 2
-        ? i % 2
-          ? this.state.theChosenTileColor[0]
-          : this.state.theChosenTileColor[1]
-        : i % 2
-          ? this.state.theChosenTileColor[1]
-          : this.state.theChosenTileColor[0];
+        ? i % 2 ? "rgba(0, 0, 0, 0.7)" : "rgba(255, 255, 255, 0.7)"
+        : i % 2 ? "rgba(255, 255, 255, 0.7)" : "rgba(0, 0, 0, 0.7)";
     } else {
-      return i % 2
-        ? this.state.theChosenTileColor[1]
-        : this.state.theChosenTileColor[0];
+      return i % 2 ? "rgba(255, 255, 255, 0.7)" : "rgba(0, 0, 0, 0.7)";
     }
   }
 
   squareDimentions(el, i, dim) {
-    console.log(this.props.theChosenTileColor[1]);
     return {
       width: this.state.tileDim,
       height: this.state.tileDim,
@@ -101,7 +89,6 @@ class Board extends Component {
   }
 
   render() {
-    console.log("the state", this.boardDimentions());
     return (
       <div style={this.boardDimentions()}>{this.renderingThesquares()}</div>
     );

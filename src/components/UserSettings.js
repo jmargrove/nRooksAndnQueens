@@ -5,7 +5,7 @@ class UserSettings extends Component {
     super(props);
     this.state = {
       solutionNumber: 0,
-      boardDim: 4
+      boardDim: 0
     };
   }
   gameType(type) {
@@ -65,8 +65,11 @@ class UserSettings extends Component {
             />
           </div>
           <button
-            onClick={() =>
-              this.props.updateBoardDim(Number(this.boardDim.value))}
+            onClick={() => {
+              if (this.boardDim.value < 12) {
+                this.props.updateBoardDim(Number(this.boardDim.value));
+              }
+            }}
           >
             Make Board
           </button>
@@ -75,7 +78,9 @@ class UserSettings extends Component {
         {this.gameType("nQueens")}
         {this.gameType("nRooks")}
         <div className="Title">
-          <button onClick={this.props.findSolutions}> GO! </button>
+          <button onClick={() => this.props.findSolutions(this.boardDim.value)}>
+            GO!
+          </button>
         </div>
         {/* <div className="Color">
           {this.boardColor("blue", "lightblue")}
