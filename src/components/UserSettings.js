@@ -30,21 +30,37 @@ class UserSettings extends Component {
     );
   }
 
-  async nextSolution() {
-    if (this.state.solutionNumber < this.props.totalNumberOfSolutions - 1) {
-      await this.setState((prevState, props) => {
-        return { solutionNumber: prevState.solutionNumber + 1 };
-      });
-      this.props.updateSolutionNumber(this.state.solutionNumber);
+  delay(n) {
+    return new Promise(resolve => {
+      setTimeout(resolve, n);
+    });
+  }
+
+  async playSolutions() {
+    while (this.state.solutionNumber < this.props.totalNumberOfSolutions - 1) {
+      if (this.state.solutionNumber < this.props.totalNumberOfSolutions - 1) {
+        await this.delay(
+          Math.log10(5000 / this.props.totalNumberOfSolutions) * 100
+        );
+        await this.setState((prevState, props) => {
+          return { solutionNumber: prevState.solutionNumber + 1 };
+        });
+        this.props.updateSolutionNumber(this.state.solutionNumber);
+      }
     }
   }
 
-  async previousSolution() {
-    if (this.state.solutionNumber > 0) {
-      await this.setState((prevState, props) => {
-        return { solutionNumber: prevState.solutionNumber - 1 };
-      });
-      this.props.updateSolutionNumber(this.state.solutionNumber);
+  async rewindSolutions() {
+    while (this.state.solutionNumber > 0) {
+      if (this.state.solutionNumber > 0) {
+        await this.delay(
+          Math.log10(5000 / this.props.totalNumberOfSolutions) * 100
+        );
+        await this.setState((prevState, props) => {
+          return { solutionNumber: prevState.solutionNumber - 1 };
+        });
+        this.props.updateSolutionNumber(this.state.solutionNumber);
+      }
     }
   }
 
@@ -68,20 +84,21 @@ class UserSettings extends Component {
             onClick={() => {
               if (this.boardDim.value < 12) {
                 this.props.updateBoardDim(Number(this.boardDim.value));
+                this.setState({ solutionNumber: 0 });
+                this.props.findSolutions(this.boardDim.value);
               }
             }}
           >
             Make Board
           </button>
         </div>
-        <div className="Title">Type</div>
-        {this.gameType("nQueens")}
-        {this.gameType("nRooks")}
-        <div className="Title">
+        {/* <div className="Title">Type</div> */}
+
+        {/* <div className="Title">
           <button onClick={() => this.props.findSolutions(this.boardDim.value)}>
             GO!
           </button>
-        </div>
+        </div> */}
         {/* <div className="Color">
           {this.boardColor("blue", "lightblue")}
           {this.boardColor("black", "white")}
@@ -92,10 +109,10 @@ class UserSettings extends Component {
         <div className="Controler">
           <div
             className="PreviousButtion"
-            onClick={() => this.previousSolution()}
+            onClick={() => this.rewindSolutions()}
           />
           <div className="SolutionNumber">{this.state.solutionNumber + 1}</div>
-          <div className="NextButtion" onClick={() => this.nextSolution()} />
+          <div className="NextButtion" onClick={() => this.playSolutions()} />
         </div>
       </div>
     );
