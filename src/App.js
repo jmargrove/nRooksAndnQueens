@@ -12,11 +12,12 @@ class App extends Component {
       allRes: null,
       solutionNumber: 0,
       displaySolution: null,
-      totalNumberOfSolutions: null
+      totalNumberOfSolutions: null,
+      boardDim: 4
     };
   }
 
-  async componentDidMount() {
+  async findSolutions() {
     await this.setState({ allRes: calc(4) });
     await this.setState({ displaySolution: this.state.allRes[0] });
     this.setState({ totalNumberOfSolutions: this.state.allRes.length });
@@ -28,37 +29,9 @@ class App extends Component {
   //   });
   // }
 
-  // renderingThesquares() {
-  //   const arri = [];
-  //   const arrj = [];
-  //   for (let i = 0; i < 4; i++) {
-  //     for (let j = 0; j < 4; j++) {
-  //       arrj.push(j);
-  //       arri.push(i);
-  //     }
-  //   }
-  //   return arri.map((el, i) => {
-  //     return (
-  //       <div
-  //         className="Square"
-  //         key={i}
-  //         id={"poss" + el + arrj[i]}
-  //         style={{
-  //           "background-color":
-  //             el % 2
-  //               ? i % 2 ? this.state.tileColor[0] : this.state.tileColor[1]
-  //               : i % 2 ? this.state.tileColor[1] : this.state.tileColor[0]
-  //         }}
-  //       >
-  //         {this.theRook("poss" + el + arrj[i])}
-  //       </div>
-  //     );
-  //   });
-  // }
-
-  theRook(local) {
-    if (this.state.displaySolution) {
-      return this.state.displaySolution.map((possi, possj) => {
+  theRook(local, displaySolution) {
+    if (displaySolution) {
+      return displaySolution.map((possi, possj) => {
         if ("poss" + possj + possi === local) {
           return <div className="Rook" />;
         }
@@ -79,26 +52,30 @@ class App extends Component {
     });
   };
 
+  updateBoardDim = settingsBoardDim => {
+    this.setState({ boardDim: settingsBoardDim });
+  };
+
   ////////////////////////////////////////////
   solutionDisplayUpdate() {}
   render() {
-    console.log("the rooks position", this.state);
+    console.log("the state", this.state);
     return (
       <div className="MaxWidth">
         <h1> nQueens & nRooks Algorithm </h1>
         <div className="CenteringContainer">
           <div className="BoardPositions">
             <Board
+              boardDim={this.state.boardDim}
               displaySolution={this.state.displaySolution}
               theRook={this.theRook}
               theChosenTileColor={this.state.tileColor}
             />
-            {/* <div className="TheBoard">{this.renderingThesquares()}</div> */}
           </div>
           <UserSettings
+            updateBoardDim={this.updateBoardDim}
+            findSolutions={this.findSolutionsSwitch}
             colorChoice={this.colorChoice}
-            // nextSolution={this.nextSolution}
-            // previousSolution={this.state.previousSolution}
             totalNumberOfSolutions={this.state.totalNumberOfSolutions}
             updateSolutionNumber={this.updateSolutionNumber}
           />

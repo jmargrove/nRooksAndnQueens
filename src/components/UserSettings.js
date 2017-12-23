@@ -4,7 +4,8 @@ class UserSettings extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      solutionNumber: 0
+      solutionNumber: 0,
+      boardDim: 4
     };
   }
   gameType(type) {
@@ -51,24 +52,38 @@ class UserSettings extends Component {
     return (
       <div className="UserOptions">
         <div className="Title">
-          <h3>User Settings</h3>
+          <h2>Options</h2>
         </div>
         <div className="BoardSizeChoice">
           <div>Board Size</div>
           <div>
-            <input type="number" min={1} max={12} />
+            <input
+              ref={el => (this.boardDim = el)}
+              type="number"
+              min={1}
+              max={12}
+            />
           </div>
-          <button>Make Board</button>
+          <button
+            onClick={() =>
+              this.props.updateBoardDim(Number(this.boardDim.value))}
+          >
+            Make Board
+          </button>
         </div>
+        <div className="Title">Type</div>
         {this.gameType("nQueens")}
         {this.gameType("nRooks")}
-        <div className="Color">
+        <div className="Title">
+          <button onClick={this.props.findSolutions}> GO! </button>
+        </div>
+        {/* <div className="Color">
           {this.boardColor("blue", "lightblue")}
           {this.boardColor("black", "white")}
           {this.boardColor("red", "pink")}
           {this.boardColor("orange", "yellow")}
           {this.boardColor("purple", "white")}
-        </div>
+        </div> */}
         <div className="Controler">
           <div
             className="PreviousButtion"
