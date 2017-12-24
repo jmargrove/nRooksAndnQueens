@@ -70,6 +70,9 @@ class UserSettings extends Component {
         <div className="Title">
           <h2>Options</h2>
         </div>
+        <div className="Title">Type</div>
+        <button onClick={() => this.props.gameType("Queens")}>nQueens</button>
+        <button onClick={() => this.props.gameType("Rooks")}>nRooks</button>
         <div className="BoardSizeChoice">
           <div>Board Size</div>
           <div>
@@ -92,7 +95,6 @@ class UserSettings extends Component {
             Make Board
           </button>
         </div>
-        {/* <div className="Title">Type</div> */}
 
         {/* <div className="Title">
           <button onClick={() => this.props.findSolutions(this.boardDim.value)}>

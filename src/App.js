@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import UserSettings from "./components/UserSettings";
-import { calc } from "./RooksEquation";
+import { calcRooks } from "./RooksEquation";
+import { calcQueens } from "./QueensEquation";
 import Board from "./components/Board";
 import "./App.css";
 
@@ -13,21 +14,30 @@ class App extends Component {
       solutionNumber: 0,
       displaySolution: null,
       totalNumberOfSolutions: null,
-      boardDim: 0
+      boardDim: 0,
+      gameType: "Rooks"
     };
   }
 
   findSolutions = async n => {
-    await this.setState({ allRes: calc(Number(n)) });
+    if (this.state.gameType === "Rooks") {
+      await this.setState({ allRes: calcRooks(Number(n)) });
+    } else {
+      await this.setState({ allRes: calcQueens(Number(n)) });
+    }
     await this.setState({ displaySolution: this.state.allRes[0] });
     this.setState({ totalNumberOfSolutions: this.state.allRes.length });
   };
 
-  theRook(local, displaySolution) {
+  theRook(local, displaySolution, GameType) {
     if (displaySolution) {
       return displaySolution.map((possi, possj) => {
         if ("poss" + possj + possi === local) {
-          return <img src={require("./rook.svg")} className="Rook" />;
+          if (GameType === "Rooks") {
+            return <img src={require("./rook.svg")} className="Rook" />;
+          } else {
+            return <img src={require("./queen.svg")} className="Rook" />;
+          }
         }
       });
     }
@@ -48,6 +58,10 @@ class App extends Component {
     this.setState({ boardDim: settingsBoardDim });
   };
 
+  updateGameType = type => {
+    this.setState({ gameType: type });
+  };
+
   ////////////////////////////////////////////
   solutionDisplayUpdate() {}
   render() {
@@ -64,6 +78,7 @@ class App extends Component {
             />
           </div>
           <UserSettings
+            gameType={this.updateGameType}
             updateBoardDim={this.updateBoardDim}
             findSolutions={this.findSolutions}
             colorChoice={this.colorChoice}

@@ -26,7 +26,8 @@ class Board extends Component {
         <div key={i} style={this.squareDimentions(el, i, this.state.boardDim)}>
           {this.props.theRook(
             "poss" + el + arrj[i],
-            this.props.displaySolution
+            this.props.displaySolution,
+            "Rooks"
           )}
         </div>
       );
@@ -90,7 +91,9 @@ class Board extends Component {
 
   render() {
     return (
-      <div style={this.boardDimentions()}>{this.renderingThesquares()}</div>
+      <div style={this.boardDimentions()} className="Board">
+        {this.renderingThesquares()}
+      </div>
     );
   }
 }
