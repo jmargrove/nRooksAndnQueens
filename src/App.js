@@ -71,6 +71,7 @@ class App extends Component {
         <div className="CenteringContainer">
           <div className="BoardPositions">
             <Board
+              pieceType={this.state.gameType}
               boardDim={this.state.boardDim}
               displaySolution={this.state.displaySolution}
               theRook={this.theRook}

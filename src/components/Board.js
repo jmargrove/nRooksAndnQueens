@@ -27,7 +27,7 @@ class Board extends Component {
           {this.props.theRook(
             "poss" + el + arrj[i],
             this.props.displaySolution,
-            "Rooks"
+            this.props.pieceType
           )}
         </div>
       );
@@ -90,6 +90,7 @@ class Board extends Component {
   }
 
   render() {
+    console.log("pT", this.props.pieceType);
     return (
       <div style={this.boardDimentions()} className="Board">
         {this.renderingThesquares()}
