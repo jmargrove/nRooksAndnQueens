@@ -17,10 +17,10 @@ class UserSettings extends Component {
     );
   }
 
-  boardColor(color1, color2) {
+  boardColor(name, color1, color2) {
     return (
-      <div className="ColorChoice" id={color1}>
-        <p> {color1}s</p>
+      <div className="ColorChoice">
+        <p> {name}s</p>
         <input
           ref={el => (this.blue = el)}
           onClick={() => this.props.colorChoice(color1, color2)}
@@ -99,11 +99,31 @@ class UserSettings extends Component {
         </div>
         <div className="Color">
           <div className="Title">Choose Color</div>
-          {this.boardColor("blue", "lightblue")}
-          {this.boardColor("black", "white")}
-          {this.boardColor("red", "pink")}
-          {this.boardColor("orange", "yellow")}
-          {this.boardColor("purple", "white")}
+          {this.boardColor(
+            "blue",
+            "rgba(0,0,255, 0.7)",
+            "rgba(255,255,50, 0.7)"
+          )}
+          {this.boardColor(
+            "black",
+            "rgba(0, 0, 0, 0.7)",
+            "rgba(255, 255, 255, 0.7)"
+          )}
+          {this.boardColor(
+            "red",
+            "rgba(255,0,0, 0.7)",
+            "rgba(255,255,255, 0.7)"
+          )}
+          {this.boardColor(
+            "orange",
+            "rgba(255,100,0, 0.7)",
+            "rgba(255,255,255, 0.7)"
+          )}
+          {this.boardColor(
+            "purple",
+            "rgba(155,0,155, 0.7)",
+            "rgba(255,255,255, 0.7)"
+          )}
         </div>
         <div>
           <div className="Title">Play Solutions</div>

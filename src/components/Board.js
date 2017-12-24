@@ -8,7 +8,7 @@ class Board extends Component {
       boardHeight: "600px",
       boardWidth: "600px",
       tileDim: "150px",
-      theChosenTileColor: ["black", "white"]
+      theChosenTileColor: ["rgba(0, 0, 0, 0.7)", "rgba(255, 255, 255, 0.7)"]
     };
   }
 
@@ -75,10 +75,16 @@ class Board extends Component {
   sortingTheTileColor(el, i, dim) {
     if (dim % 2 === 0) {
       return el % 2
-        ? i % 2 ? "rgba(0, 0, 0, 0.7)" : "rgba(255, 255, 255, 0.7)"
-        : i % 2 ? "rgba(255, 255, 255, 0.7)" : "rgba(0, 0, 0, 0.7)";
+        ? i % 2
+          ? this.state.theChosenTileColor[0]
+          : this.state.theChosenTileColor[1]
+        : i % 2
+          ? this.state.theChosenTileColor[1]
+          : this.state.theChosenTileColor[0];
     } else {
-      return i % 2 ? "rgba(255, 255, 255, 0.7)" : "rgba(0, 0, 0, 0.7)";
+      return i % 2
+        ? this.state.theChosenTileColor[1]
+        : this.state.theChosenTileColor[0];
     }
   }
 
