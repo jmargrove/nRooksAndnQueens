@@ -70,11 +70,13 @@ class UserSettings extends Component {
         <div className="Title">
           <h2>Options</h2>
         </div>
-        <div className="Title">Type</div>
-        <button onClick={() => this.props.gameType("Queens")}>nQueens</button>
-        <button onClick={() => this.props.gameType("Rooks")}>nRooks</button>
+        <div className="ChooseGameType">
+          <div className="Title">nGame Type</div>
+          <button onClick={() => this.props.gameType("Queens")}>nQueens</button>
+          <button onClick={() => this.props.gameType("Rooks")}>nRooks</button>
+        </div>
         <div className="BoardSizeChoice">
-          <div>Board Size</div>
+          <div className="Title">Board Size</div>
           <div>
             <input
               ref={el => (this.boardDim = el)}
@@ -95,26 +97,26 @@ class UserSettings extends Component {
             Make Board
           </button>
         </div>
-
-        {/* <div className="Title">
-          <button onClick={() => this.props.findSolutions(this.boardDim.value)}>
-            GO!
-          </button>
-        </div> */}
-        {/* <div className="Color">
+        <div className="Color">
+          <div className="Title">Choose Color</div>
           {this.boardColor("blue", "lightblue")}
           {this.boardColor("black", "white")}
           {this.boardColor("red", "pink")}
           {this.boardColor("orange", "yellow")}
           {this.boardColor("purple", "white")}
-        </div> */}
-        <div className="Controler">
-          <div
-            className="PreviousButtion"
-            onClick={() => this.rewindSolutions()}
-          />
-          <div className="SolutionNumber">{this.state.solutionNumber + 1}</div>
-          <div className="NextButtion" onClick={() => this.playSolutions()} />
+        </div>
+        <div>
+          <div className="Title">Play Solutions</div>
+          <div className="Controler">
+            <div
+              className="PreviousButtion"
+              onClick={() => this.rewindSolutions()}
+            />
+            <div className="SolutionNumber">
+              {this.state.solutionNumber + 1}
+            </div>
+            <div className="NextButtion" onClick={() => this.playSolutions()} />
+          </div>
         </div>
       </div>
     );

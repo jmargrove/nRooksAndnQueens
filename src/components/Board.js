@@ -35,6 +35,10 @@ class Board extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log("NEXT", nextProps);
+    if (this.state.theChosenTileColor !== nextProps.tileColor) {
+      this.setState({ theChosenTileColor: nextProps.tileColor });
+    }
     if (this.props.boardDim !== nextProps.boardDim) {
       this.setState({ boardDim: nextProps.boardDim });
       if (nextProps.boardDim <= 4) {
