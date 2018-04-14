@@ -9,6 +9,15 @@ The n queens puzzle is the problem of placing n chess queens on an n×n chessboa
    <img src = "https://s3-eu-west-1.amazonaws.com/james.margrove/generalReadMEpictures/nqueens4.png" height = "233px" align = "center">
 </p>
 
+<h2> go to the page on github pages</h2>
+https://t03jam8.github.io/nRooksAndnQueens/
+<ol>
+ <li>Choose either rook or queens problem</li>
+  <li>select the n (dimentions of the board)</li>
+  <li> Make the board </li>
+  <li>Play the solutions </li>
+</ol>
+
 
 <h2> Getting started </h2> 
  <ul>
