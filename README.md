@@ -13,17 +13,17 @@ The n queens puzzle is the problem of placing n chess queens on an n×n chessboa
 https://t03jam8.github.io/nRooksAndnQueens/
 <ol>
  <li>Choose either rook or queens problem</li>
-  <li>select the n (dimentions of the board)</li>
-  <li> Make the board </li>
+  <li>Select the n (dimentions of the board)</li>
+  <li>Make the board </li>
   <li>Play the solutions </li>
 </ol>
 
 
 <h2> Getting started </h2> 
  <ul>
- <li>Clone this repo, git clone https://github.com/t03jam8/nRooksAndnQueens.git</li>
- <li>Install all dependancies npm install</li>
- <li>To start the client in developer mode run npm start at the command line </li>
+  <li>Clone this repo, git clone https://github.com/t03jam8/nRooksAndnQueens.git</li>
+  <li>Install all dependancies npm install</li>
+  <li>To start the client in developer mode run npm start at the command line </li>
  </ul>
 
 <h2> Tech stack </h2>
