@@ -1,17 +1,13 @@
 <h1> nRooks & nQueens problem </h1>
 
-
-
-<div/>
-
 <h2 align="left"> The problem </h2>
 <p align="left"> 
 The n queens puzzle is the problem of placing n chess queens on an n×n chessboard so that no two queens threaten each other. Thus, a solution requires that no two queens share the same row, column, or diagonal. 
 </p>
 
 <div>
-  <img align="right" src = "https://s3-eu-west-1.amazonaws.com/james.margrove/generalReadMEpictures/out2.gif" width="400px">
-  <img align="left" src = "https://thumbs.gfycat.com/ElasticLightheartedFlatfish-size_restricted.gif" width="400px">
+  <img align="right" src = "https://s3-eu-west-1.amazonaws.com/james.margrove/generalReadMEpictures/out2.gif" height="265px">
+  <img align="left" src = "https://thumbs.gfycat.com/ElasticLightheartedFlatfish-size_restricted.gif" height="265px">
 </div>
 
 
