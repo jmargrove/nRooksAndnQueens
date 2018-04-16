@@ -1,4 +1,4 @@
-exports.calc = n => {
+exports.calcRooks = n => {
   let rooks = 0;
   let j = 0;
   let solutions = 0;

@@ -17,10 +17,10 @@ class UserSettings extends Component {
     );
   }
 
-  boardColor(color1, color2) {
+  boardColor(name, color1, color2) {
     return (
-      <div className="ColorChoice" id={color1}>
-        <p> {color1}s</p>
+      <div className="ColorChoice">
+        <p> {name}s</p>
         <input
           ref={el => (this.blue = el)}
           onClick={() => this.props.colorChoice(color1, color2)}
@@ -70,8 +70,13 @@ class UserSettings extends Component {
         <div className="Title">
           <h2>Options</h2>
         </div>
+        <div className="ChooseGameType">
+          <div className="Title">nGame Type</div>
+          <button onClick={() => this.props.gameType("Queens")}>nQueens</button>
+          <button onClick={() => this.props.gameType("Rooks")}>nRooks</button>
+        </div>
         <div className="BoardSizeChoice">
-          <div>Board Size</div>
+          <div className="Title">Board Size</div>
           <div>
             <input
               ref={el => (this.boardDim = el)}
@@ -92,27 +97,46 @@ class UserSettings extends Component {
             Make Board
           </button>
         </div>
-        {/* <div className="Title">Type</div> */}
-
-        {/* <div className="Title">
-          <button onClick={() => this.props.findSolutions(this.boardDim.value)}>
-            GO!
-          </button>
-        </div> */}
-        {/* <div className="Color">
-          {this.boardColor("blue", "lightblue")}
-          {this.boardColor("black", "white")}
-          {this.boardColor("red", "pink")}
-          {this.boardColor("orange", "yellow")}
-          {this.boardColor("purple", "white")}
-        </div> */}
-        <div className="Controler">
-          <div
-            className="PreviousButtion"
-            onClick={() => this.rewindSolutions()}
-          />
-          <div className="SolutionNumber">{this.state.solutionNumber + 1}</div>
-          <div className="NextButtion" onClick={() => this.playSolutions()} />
+        <div className="Color">
+          <div className="Title">Choose Color</div>
+          {this.boardColor(
+            "blue",
+            "rgba(0,0,255, 0.7)",
+            "rgba(255,255,50, 0.7)"
+          )}
+          {this.boardColor(
+            "black",
+            "rgba(0, 0, 0, 0.7)",
+            "rgba(255, 255, 255, 0.7)"
+          )}
+          {this.boardColor(
+            "red",
+            "rgba(255,0,0, 0.7)",
+            "rgba(255,255,255, 0.7)"
+          )}
+          {this.boardColor(
+            "orange",
+            "rgba(255,100,0, 0.7)",
+            "rgba(255,255,255, 0.7)"
+          )}
+          {this.boardColor(
+            "purple",
+            "rgba(155,0,155, 0.7)",
+            "rgba(255,255,255, 0.7)"
+          )}
+        </div>
+        <div>
+          <div className="Title">Play Solutions</div>
+          <div className="Controler">
+            <div
+              className="PreviousButtion"
+              onClick={() => this.rewindSolutions()}
+            />
+            <div className="SolutionNumber">
+              {this.state.solutionNumber + 1}
+            </div>
+            <div className="NextButtion" onClick={() => this.playSolutions()} />
+          </div>
         </div>
       </div>
     );

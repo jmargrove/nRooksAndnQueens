@@ -8,7 +8,7 @@ class Board extends Component {
       boardHeight: "600px",
       boardWidth: "600px",
       tileDim: "150px",
-      theChosenTileColor: ["black", "white"]
+      theChosenTileColor: ["rgba(0, 0, 0, 0.7)", "rgba(255, 255, 255, 0.7)"]
     };
   }
 
@@ -26,7 +26,8 @@ class Board extends Component {
         <div key={i} style={this.squareDimentions(el, i, this.state.boardDim)}>
           {this.props.theRook(
             "poss" + el + arrj[i],
-            this.props.displaySolution
+            this.props.displaySolution,
+            this.props.pieceType
           )}
         </div>
       );
@@ -34,6 +35,10 @@ class Board extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log("NEXT", nextProps);
+    if (this.state.theChosenTileColor !== nextProps.tileColor) {
+      this.setState({ theChosenTileColor: nextProps.tileColor });
+    }
     if (this.props.boardDim !== nextProps.boardDim) {
       this.setState({ boardDim: nextProps.boardDim });
       if (nextProps.boardDim <= 4) {
@@ -70,10 +75,16 @@ class Board extends Component {
   sortingTheTileColor(el, i, dim) {
     if (dim % 2 === 0) {
       return el % 2
-        ? i % 2 ? "rgba(0, 0, 0, 0.7)" : "rgba(255, 255, 255, 0.7)"
-        : i % 2 ? "rgba(255, 255, 255, 0.7)" : "rgba(0, 0, 0, 0.7)";
+        ? i % 2
+          ? this.state.theChosenTileColor[0]
+          : this.state.theChosenTileColor[1]
+        : i % 2
+          ? this.state.theChosenTileColor[1]
+          : this.state.theChosenTileColor[0];
     } else {
-      return i % 2 ? "rgba(255, 255, 255, 0.7)" : "rgba(0, 0, 0, 0.7)";
+      return i % 2
+        ? this.state.theChosenTileColor[1]
+        : this.state.theChosenTileColor[0];
     }
   }
 
@@ -81,16 +92,20 @@ class Board extends Component {
     return {
       width: this.state.tileDim,
       height: this.state.tileDim,
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
+      display: "grid",
+      grid: "repeat(2, 60px) / auto-flow 80px",
+      // justifyContent: "center",
+      // alignItems: "center",
       backgroundColor: this.sortingTheTileColor(el, i, dim)
     };
   }
 
   render() {
+    console.log("pT", this.props.pieceType);
     return (
-      <div style={this.boardDimentions()}>{this.renderingThesquares()}</div>
+      <div style={this.boardDimentions()} className="Board">
+        {this.renderingThesquares()}
+      </div>
     );
   }
 }
