@@ -9,7 +9,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tileColor: ["black", "white"],
+      tileColor: ["rgba(0, 0, 0, 0.7)", "rgba(255, 255, 255, 0.7)"],
       allRes: null,
       solutionNumber: 0,
       displaySolution: null,

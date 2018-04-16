@@ -92,9 +92,10 @@ class Board extends Component {
     return {
       width: this.state.tileDim,
       height: this.state.tileDim,
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
+      display: "grid",
+      grid: "repeat(2, 60px) / auto-flow 80px",
+      // justifyContent: "center",
+      // alignItems: "center",
       backgroundColor: this.sortingTheTileColor(el, i, dim)
     };
   }
