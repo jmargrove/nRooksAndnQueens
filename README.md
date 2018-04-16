@@ -6,8 +6,8 @@ The n queens puzzle is the problem of placing n chess queens on an n×n chessboa
 </p>
 
 <div>
-  <img align="right" src = "https://s3-eu-west-1.amazonaws.com/james.margrove/generalReadMEpictures/out2.gif" height="268px">
-  <img align="left" src = "https://thumbs.gfycat.com/ElasticLightheartedFlatfish-size_restricted.gif" height="268px">
+  <img align="right" src = "https://s3-eu-west-1.amazonaws.com/james.margrove/generalReadMEpictures/out2.gif" width="50%">
+  <img align="left" src = "https://thumbs.gfycat.com/ElasticLightheartedFlatfish-size_restricted.gif" width="50%">
 </div>
 
 
